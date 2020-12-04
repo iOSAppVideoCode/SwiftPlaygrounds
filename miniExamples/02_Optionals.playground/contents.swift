@@ -8,6 +8,7 @@ let dave = "Dave"
 // Optionals
 var optionalFloat: Float?
 var requiredFloat: Float
+var implicitlyUnwrappedOptionFloat: Float!
 
 optionalFloat = 5.0
 requiredFloat = 5.0
@@ -28,19 +29,30 @@ requiredThatIsNotNil
 
 
 // Part 2.
+import UIKit
+
 // Views in a Playground + Optional Chaining
+let b = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+b.backgroundColor = UIColor.red
 
+//b.setTitle("Press Me", for: .normal)
 
+print(b.titleLabel)
+print(b.titleLabel?.text)  // Optional chaining
+print(b.titleLabel!.text)  // Force unwrapping
 
-
+//print(b.titleLabel!.text!)
 
 // Optional Binding
-
-
-
-
-
-
-
+if let myText = b.titleLabel?.text {
+  print("There is text and the value is \(myText)")
+} else {
+  print("There is no text on the label")
+}
 
 // Implicitly Unwrapped Optionals
+let myImplicitlyUnwrappedOptionalLabel: UILabel! = b.titleLabel
+
+print(myImplicitlyUnwrappedOptionalLabel.text)
+//print(myImplicitlyUnwrappedOptionalLabel.text!)
+
